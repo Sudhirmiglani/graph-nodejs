@@ -1,7 +1,6 @@
 const express = require('express');
 const request = require('request');
-var promise = require('promise');
-const API = require('../config/config').API;
+const Promise = require('promise');
 const util = require('util');
 
 let router = express.Router();
