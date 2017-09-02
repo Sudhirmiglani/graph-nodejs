@@ -7,6 +7,7 @@ const expressValidator = require('express-validator');
 const index = require('./controllers/index');
 const mock = require('./controllers/mock');
 const graph = require('./controllers/graph');
+const {isLinkAllowed} = require('./services/nodeService');
 const util = require('util');
 
 const app = express();
@@ -16,12 +17,19 @@ global.logger = require('./config/logger');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.enable('trust proxy');
 
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(function (req, res, next) {
+    const ip = req.ip || req.connection.remoteAddress;
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+    if (isLinkAllowed(ip)) {
+        next();
+    } else {
+        logger.info(util.format("IP is blocked -> {}"), ip);
+        res.status(403).json('Not authorized to connect here.');
+    }
+
 });
 
 // app.use(logger('dev'));

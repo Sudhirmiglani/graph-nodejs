@@ -83,8 +83,19 @@ const traverseGraph = (disjointSet) => {
 
 };
 
+const isLinkAllowed = (ip) => {
+
+    return true;
+
+    // uncomment this line to activate IP filtering
+    // localhost:3000 can be a master server which can talk to each other server for configuration changes
+    //let list = getAdjacencyList() || [];
+    //return list.some(node => node.ip === ip) || ip === "localhost:3000";
+};
+
 module.exports = {
     initialise,
     addLinks,
-    traverseGraph
+    traverseGraph,
+    isLinkAllowed
 };

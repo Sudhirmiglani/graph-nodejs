@@ -15,9 +15,9 @@ const addLink = ({ip, name}) => {
     nodeInfo.addEdge(node);
 };
 
-const getAdjacencyList =() => {
+const getAdjacencyList = () => {
 
-    return nodeInfo.getAdjacencyList();
+    return nodeInfo && (nodeInfo instanceof Node) && nodeInfo.getAdjacencyList();
 };
 
 
