@@ -2,16 +2,69 @@
 
 This is an implementation of Graph Network in Nodejs
 
-main.js is the main program to run
 ## Usage
 
 Install npm.
 cd to the project folder and run:
 
-    node main
+    npm install
+    
+To start the server, run:
+
+    NODE_PORT=3001 node ./bin/www
+
+Change NODE_PORT in another cmd to run another instances of the server
+
+Initialise server data
+    
+    http://localhost:3001/graph/init
+    Method : POST
+    Data : {
+           	"name": "A"
+           }
+
+Initialise links
+    
+    http://localhost:3001/graph/links
+    Method : POST
+    Data : {
+           	"links": [{
+           		"name" : "B",
+           		"ip" : "http://localhost:3001"
+           	},{
+           		"name" : "C",
+           		"ip" : "http://localhost:3007"
+           	}]
+           }
+          
+Do this for each instance of the server.
+
+To get topology,
+
+    http://localhost:3001/graph/topology/all
+    Method : GET
+
+This will return the adjacency list data structure of the topology
 
 
-Update the structure of graph by updating the createGraph function.
-Update the source and destination nodes in the search function for updating search path
+To make things easier, there is an endpoint exposed to do initialisation part,
+run localhost on some other port and hit
+    
+    http://localhost:3000/mock
+    Method : POST
+    
+This will initialise 3 different servers running on port 3001, 3002 and 3003. 
+You can change mock.js file if you want to update the topology
 
-graph.js contains the graph blueprint and node blueprint
+Project Structure:
+
+bin - contains server setup
+
+config - consists of constants and logger info
+
+controllers - endpoints
+
+graph - graph classes
+
+services - to interact with other servers and reuse logic
+ 
