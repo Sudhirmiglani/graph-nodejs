@@ -1,6 +1,6 @@
 
 
-const Graph = require('./graph');
+const Graph = require('./graph/graph');
 
 let graph;
 

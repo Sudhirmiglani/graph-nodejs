@@ -96,4 +96,7 @@ class Node {
 }
 
 
-module.exports = Graph;
+module.exports = {
+    Graph,
+    Node
+};

@@ -1,0 +1,20 @@
+{
+  "development": {
+    "logger": {
+      "level": "debug",
+      "console": true
+    }
+  },
+  "test": {
+    "logger": {
+      "level": "debug",
+      "console": true
+    }
+  },
+  "production": {
+    "logger": {
+      "level": "info",
+      "console": false
+    }
+  }
+}
