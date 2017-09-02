@@ -51,7 +51,7 @@ To make things easier, there is an endpoint exposed to do initialisation part,
 run localhost on some other port and hit
     
     http://localhost:3000/mock
-    Method : POST
+    Method : GET
     
 This will initialise 3 different servers running on port 3001, 3002 and 3003. 
 You can change mock.js file if you want to update the topology
